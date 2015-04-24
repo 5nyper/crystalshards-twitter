@@ -48,7 +48,7 @@ if File.exists?("list.json") == false
 	}
 elsif
     par1 = Hash(String, String).from_json File.read("list.json")
-    res = par1.to_a-par
+    res = par-par1.to_a
     if res.length == 0
 	puts "No"
     elsif

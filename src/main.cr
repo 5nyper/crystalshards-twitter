@@ -6,16 +6,16 @@ require "json"
 class GithubRepo
   json_mapping({
     name: { type: String },
-	  watchers_count: { type: Int32 },
+    watchers_count: { type: Int32 },
     description: { type: String, nilable: true }
   })
 end
 
 class Compare
-	json_mapping({
-		name: { type: String },
-		description: { type: String }
-	})
+    json_mapping({
+    name: { type: String },
+    description: { type: String }
+    })
 end
 
 class GithubRepos
@@ -25,14 +25,14 @@ class GithubRepos
   })
 
   def items
-	  @items.sort_by(&.watchers_count).reverse
+      @items.sort_by(&.watchers_count).reverse
   end
 end
 
 def headers
   headers = HTTP::Headers.new
-	headers["User-Agent"] = "crystalshards"
-	headers
+  headers["User-Agent"] = "crystalshards"
+  headers
 end
 
 client = HTTP::Client.new("api.github.com", 443, true)
@@ -47,12 +47,12 @@ if File.exists?("list.json") == false
 		puts "File saved"
 	}
 elsif
-	par1 = Hash(String, String).from_json File.read("list.json")
-	res = par1.to_a-par
-	if res.length == 0
-		puts "No"
-	elsif
-		puts res
-	end
+    par1 = Hash(String, String).from_json File.read("list.json")
+    res = par1.to_a-par
+    if res.length == 0
+	puts "No"
+    elsif
+	puts res
+    end
 end
 	

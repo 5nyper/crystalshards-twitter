@@ -59,7 +59,7 @@ elsif
 	elsif
 		res = pH
 		#sen["tweet"] = res[0]
-		File.open("tweet.json", "w") { |f|
+		File.open("file.tweet", "w") { |f|
 		    res[0].each do |k, v|
 		    	f << "#{k} - #{v}"
 		    end

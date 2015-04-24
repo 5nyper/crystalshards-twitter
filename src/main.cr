@@ -6,7 +6,7 @@ require "json"
 class GithubRepo
   json_mapping({
     name: { type: String },
-	watchers_count: { type: Int32 },
+	  watchers_count: { type: Int32 },
     description: { type: String, nilable: true }
   })
 end
@@ -30,7 +30,7 @@ class GithubRepos
 end
 
 def headers
-    headers = HTTP::Headers.new
+  headers = HTTP::Headers.new
 	headers["User-Agent"] = "crystalshards"
 	headers
 end

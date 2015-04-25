@@ -52,7 +52,7 @@ elsif
 	par1 = Hash(String, String).from_json File.read("list.json")
 	pH = par-par1.to_a
 	if pH.length == 0
-		File.open("list.json", "w") { |f|
+		File.open("file.tweet", "w") { |f|
 		    f << ""
 		    puts "No new projects"
 	}
@@ -72,4 +72,3 @@ elsif
 		}
 	end
 end
-

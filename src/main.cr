@@ -3,8 +3,6 @@
 require "http/client"
 require "json"
 
-#sen = {} of String => Array
-
 class GithubRepo
 	json_mapping({
   	  name: { type: String },

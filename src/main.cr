@@ -59,8 +59,12 @@ elsif
 	elsif
 		res = pH.to_a
 		File.open("file.tweet", "w") { |f|
-      f << "#{res[0][0]} - #{res[0][1][0]} - #{res[0][1][1]}"
-		    puts "New project recieved! Tweeting..."
+			if res[0][1][0] == ""
+				f << "#{res[0][0]} - N/A - #{res[0][1][1]}"
+			else
+      			f << "#{res[0][0]} - #{res[0][1][0]} - #{res[0][1][1]}"
+		    	puts "New project recieved! Tweeting..."
+			end
 		}
 		`ruby twit.rb`
 		puts "Tweeted!"

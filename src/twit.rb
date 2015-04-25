@@ -7,4 +7,10 @@ client = Twitter::REST::Client.new do |config|
   config.access_token_secret = "ATS"
 end
 
-client.update(File.open("tweet.json") if File.open("tweet.json") != "")
+tweet = File.open("tweet.json")
+
+if tweet != ""
+	client.update(tweet)
+elsif
+	puts "No Tweet"
+end

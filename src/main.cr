@@ -3,7 +3,7 @@
 require "http/client"
 require "json"
  
-class GithubRepo
+class Gitapi1
 	json_mapping({
   	name: { type: String },
   	watchers_count: { type: Int32 },
@@ -12,18 +12,10 @@ class GithubRepo
 	})
 end
  
-class Compare
-	json_mapping({
-	    name: { type: String },
-		html_url: { type: String },
-	    description: { type: String }
-	})
-end
- 
-class GithubRepos
+class Gitapi2
 	json_mapping({
 	    total_count: { type: Int32 },
-	    items: { type: Array(GithubRepo) }
+	    items: { type: Array(Gitapi1) }
 	})
  
 def items
@@ -39,9 +31,9 @@ end
  
 client = HTTP::Client.new("api.github.com", 443, true)
 response = client.get("/search/repositories?q=language:crystal&per_page=100", headers)
-total = GithubRepos.from_json(response.body).total_count
+total = Gitapi2.from_json(response.body).total_count
 puts total
-par = GithubRepos.from_json(response.body).items.map {|repo| [repo.name, [repo.description, repo.html_url]] }.to_h.to_a
+par = Gitapi2.from_json(response.body).items.map {|repo| [repo.name, [repo.description, repo.html_url]] }.to_h.to_a
  
 if File.exists?("list.json") == false
 	File.open("list.json", "w") { |f|

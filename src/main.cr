@@ -54,10 +54,10 @@ elsif
 			if res[0][1][0] == ""
 				f << "#{res[0][0]} - N/A - #{res[0][1][1]}"
 			else
-      			f << "#{res[0][0]} - #{res[0][1][0]} - #{res[0][1][1]}"
-		    	puts "New project recieved! Tweeting..."
+      				f << "#{res[0][0]} - #{res[0][1][0]} - #{res[0][1][1]}"
 			end
 		}
+		puts "New project recieved! Tweeting..."
 		`ruby twit.rb`
 		puts "Tweeted!"
 		File.open("list.json", "w") { |f|
